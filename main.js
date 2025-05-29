@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector(".rating-form");
   const elOuterContainer = document.querySelector(".outer-container");
   const elThankyouComponent = document.querySelector(".thank-you-component");
-  const submitButton = form.querySelector(".submit-button");
+  const submitButton = form.querySelector(".js-submit-button");
   const ratingInputs = form.querySelectorAll('input[name="rating"]');
   let elRatingValue = document.querySelector(".js-rating-value");
 
