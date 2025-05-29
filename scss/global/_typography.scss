@@ -1,0 +1,90 @@
+@use "../util/" as u;
+
+@layer typography {
+  /* overpass-regular - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: "Overpass";
+    font-style: normal;
+    font-weight: 400;
+    src: url("./../../fonts/overpass-v16-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* overpass-600 - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: "Overpass";
+    font-style: normal;
+    font-weight: 600;
+    src: url("./../../fonts/overpass-v16-latin-600.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* overpass-700 - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: "Overpass";
+    font-style: normal;
+    font-weight: 700;
+    src: url("./../../fonts/overpass-v16-latin-700.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+
+  :root {
+    --fs-32: calc(32 / 16 * 1rem);
+    --fs-28: calc(28 / 16 * 1rem);
+    --fs-24: calc(24 / 16 * 1rem);
+    --fs-18: calc(18 / 16 * 1rem);
+    --fs-16: 1rem;
+    --fs-15: calc(15 / 16 * 1rem);
+    --fs-14: calc(14 / 16 * 1rem);
+
+    --font-size-h1: clamp(var(--fs-24), 1.25rem + 0.8vi, var(--fs-28));
+    --font-size-p: var(--fs-16);
+
+    --font-default: "Overpass", sans-serif;
+  }
+
+  body {
+    font-size: var(--font-size-p);
+    font-family: var(--font-default);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  p {
+    font-size: var(--fs-15);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    margin: 0;
+    text-wrap: balance;
+    line-height: normal;
+  }
+
+  h1,
+  .h1 {
+    font-size: var(--font-size-h1);
+    font-weight: 700;
+    color: var(--c-white);
+  }
+
+  h2,
+  .h2 {
+    font-size: var(--font-size-h2);
+    font-weight: 400;
+  }
+
+  p {
+    max-inline-size: 50ch;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--c-orange-500);
+  }
+
+  .attribution {
+    font-weight: 400;
+  }
+}

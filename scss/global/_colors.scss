@@ -1,0 +1,17 @@
+:root {
+  --c-grey-950: hsl(216, 12%, 8%);
+  --c-grey-900: hsl(213, 19%, 18%);
+  --c-grey-500: hsl(217, 12%, 63%);
+  --c-orange-500: hsl(25, 97%, 53%);
+  --c-white: hsl(0, 100%, 100%);
+  --c-black: hsl(0, 100%, 0%);
+
+  --c-gradient-radial: radial-gradient(
+    98.96% 98.96% at 50% 0%,
+    hsl(215, 20%, 17%) 0%,
+    hsl(216, 24%, 12%) 100%
+  );
+
+  --color-bg: var(--c-grey-900);
+  --color-text: var(--c-grey-500);
+}

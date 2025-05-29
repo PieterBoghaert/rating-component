@@ -1,0 +1,214 @@
+@use "../util/" as u;
+
+@layer layout {
+  :root {
+    --spacing-0: 0;
+    --spacing-100: calc(8 / 16 * 1rem);
+    --spacing-150: calc(15 / 16 * 1rem);
+    --spacing-200: 1rem;
+    --spacing-300: calc(24 / 16 * 1rem);
+    --spacing-400: calc(32 / 16 * 1rem);
+    --spacing-500: calc(40 / 16 * 1rem);
+    --spacing-1300: calc(104 / 16 * 1rem);
+    --spacing-1700: calc(136 / 16 * 1rem);
+
+    --br-8: 0.5rem;
+    --br-30: calc(30 / 16 * 1rem);
+    --br-full: 50%;
+    --wrapper-size: calc(412 / 16 * 1rem);
+  }
+
+  html {
+    color-scheme: light;
+  }
+
+  body {
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    margin: 0;
+  }
+
+  .wrapper {
+    inline-size: min(100% - var(--spacing-300), var(--wrapper-size));
+    margin-inline: auto;
+  }
+
+  .site-content {
+    display: grid;
+    place-items: center;
+    min-block-size: 90dvh;
+  }
+
+  .outer-container {
+    overflow-x: clip;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rating-component,
+  .thank-you-component {
+    background-image: var(--c-gradient-radial);
+    padding: var(--spacing-400) var(--spacing-300);
+    border-radius: var(--br-30);
+  }
+
+  .rating-form {
+    counter-reset: rating-counter;
+
+    .form-group {
+      margin-block: var(--spacing-200) var(--spacing-400);
+      display: flex;
+      justify-content: space-between;
+      gap: var(--spacing-200);
+    }
+
+    label {
+      counter-increment: rating-counter;
+      background-color: var(--c-grey-900);
+      inline-size: 42px;
+      aspect-ratio: 1 / 1;
+      border-radius: var(--br-full);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      &::before {
+        content: counter(rating-counter);
+        font-weight: bold;
+      }
+
+      &:hover {
+        background-color: var(--c-white);
+        color: var(--c-grey-900);
+      }
+
+      &:has(input[type="radio"]:checked) {
+        background-color: var(--c-orange-500);
+        color: var(--c-grey-900);
+      }
+    }
+
+    input[type="submit"] {
+      padding-block: var(--spacing-100);
+      background-color: var(--c-orange-500);
+      inline-size: 100%;
+      border-radius: var(--br-30);
+      font-size: var(--fs-14);
+      font-family: inherit;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in;
+      color: var(--c-grey-950);
+      font-weight: 600;
+      line-height: var(--fs-24);
+
+      &[disabled] {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      &:hover {
+        background-color: var(--c-white);
+      }
+    }
+  }
+
+  .rating-component {
+    p {
+      margin-block: var(--spacing-200);
+    }
+
+    .star-icon {
+      inline-size: 40px;
+      aspect-ratio: 1 / 1;
+      border-radius: var(--br-full);
+      background-color: var(--c-grey-900);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-block-end: var(--spacing-400);
+
+      img {
+        transition: transform 0.3s ease;
+      }
+    }
+
+    &:hover .star-icon {
+      img {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .thank-you-component {
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: 0;
+    inline-size: 100%;
+    //block-size: 100%;
+    transform: translateX(-100%);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--spacing-400);
+
+    img {
+      align-self: center;
+    }
+
+    h2 {
+      margin-block-end: var(--spacing-200);
+    }
+
+    .rating-display {
+      padding: var(--spacing-100) var(--spacing-200);
+      inline-size: fit-content;
+      margin-inline: auto;
+      border-radius: var(--br-30);
+      font-size: var(--fs-15);
+      color: var(--c-orange-500);
+      background-color: var(--c-grey-900);
+    }
+
+    &.show {
+      transform: translateY(0);
+    }
+  }
+
+  .attribution {
+    display: block;
+    text-align: center;
+    padding-block: var(--spacing-300);
+  }
+
+  @include u.breakpoint("medium") {
+    .rating-component,
+    .thank-you-component {
+      padding: var(--spacing-500) var(--spacing-400);
+    }
+
+    .rating-form {
+      .form-group {
+        column-gap: var(--spacing-300);
+
+        label {
+          inline-size: 51px;
+        }
+      }
+    }
+
+    .rating-component {
+      .star-icon {
+        inline-size: 48px;
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .thank-you-component {
+      transition: transform 0.3s ease-in;
+    }
+  }
+}
